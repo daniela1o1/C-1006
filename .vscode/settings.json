@@ -5,5 +5,9 @@
             "binaryPath": "c:\\Users\\danie\\ws\\my-ws\\c-1006\\main.exe",
             "binaryArgs": []
         }
-    ]
+    ],
+    "files.associations": {
+        "stdlib.h": "c",
+        "windows.h": "c"
+    }
 }

@@ -1,19 +1,30 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
+#include <windows.h>
+#include <stdlib.h>
+#include "menu.h"
+#include "door.h"
+#include "cards.h"
+#include "addRemove.h"
+
 
 int main(){
     while(true){
-        printf("Admin menu\n");
-        printf("1. Remote open door\n");
-        printf("2. List all cards in system\n");
-        printf("3. Add/remove access\n");
-        printf("4. Exit\n");
-        printf("9. FAKE TEST SCAN CARD\n");
-        printf("Select option: ");
+        printMenu();
         int option;
-        scanf(" %d", &option);
-        if(option == 4){
+        scanf("%d", &option);
+        if(option == 1){
+            remoteOpenDoor();
+        }
+        else if(option == 4){
             break;
+        }
+        else if(option == 2){
+            listAllCards();
+        }
+        else if(option == 3){
+            addRemove();
         }
     }
     return 0;
