@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "cards.h"
 
 
-void addRemove(){
+void addRemove(CARDS *cardArrey){
     printf("Enter cardnumber:\n");
 
 }

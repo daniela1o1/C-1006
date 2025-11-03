@@ -1,6 +1,6 @@
 #ifndef ADDREMOVE_H
 #define ADDREMOVE_H
 
-void addRemove();
+void addRemove(CARDS *cardArrey);
 
 #endif

@@ -3,11 +3,15 @@
 #include <Windows.h>
 #include <stdlib.h>
 
+
 void remoteOpenDoor(){
-    printf("CURRENT LAMP: Green \n");
+
+    printf("\033[32mCURRENT LAMP: Green\033[0m\n");
     fflush(stdout);
     sleep(3);
 
-    printf("\r%22s\r", "");
+    printf("\033[F\033[K");
     fflush(stdout);
+    
 }
+    

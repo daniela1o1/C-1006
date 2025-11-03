@@ -6,7 +6,7 @@ void printMenu(){
     printf("2. List all cards in system\n");
     printf("3. Add/remove access\n");
     printf("4. Exit\n");
-    printf("9. FAKE TEST SCAN CARD\n");
+    printf("5. FAKE TEST SCAN CARD\n");
     printf("Select option: ");
 
 }
