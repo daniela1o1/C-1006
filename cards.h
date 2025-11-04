@@ -15,7 +15,7 @@ CARDS; //lådan
 
 
 //extern CARDS *listOfCards;
-//extern int numCards;
+//extern int cardArrey.cardAmount;
 //ta cardArrey (all data), allt annat(->/. osv är för att hitta specifik data i listofcards).
 //kommer åt allCards eller cardAmount 
 // cardArrey->allcards[].cardNr 
