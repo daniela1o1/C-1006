@@ -7,41 +7,53 @@
 //#define BOLD "\033[1m"
 //#define RESET "\033[0m"
 
-// dword för att skapa en trådfunktion för lampan
-// winapi för korrekt kommunikation med kompilatorn
-// showLamp rensar upp i stacken när funktionen avslutas
-DWORD WINAPI showLamp(void *param){ 
-    Lamp *lampData = (Lamp*)param;
 
-    if(lampData->greenLight)
-    printf("\033[32mCURRENT LAMP: GREEN\033[0m\n");
+
+Card *findCardByNumber(CARDS *cards, int cardNr){
+    if(!cards) return NULL;
+    for(int i = 0; i < cards->cardAmount; ++i){
+        if(cards->allCards[i].cardNr == cardNr) return &cards->allCards[i];
+    }
+    return NULL;
+}
+
+void fakeTestScanCard(CARDS *cardArrey){
+
+    if (!cardArrey) return;
+
+    char buffer[64];
+    fputs("Enter cardnumber: ", stdout);
+    fflush(stdout);
+
+
+    if(fgets(buffer, sizeof(buffer), stdin) == NULL){
+        printf("\033[31mCURRENT LAMP: RED!\033[0m\n");
+        sleep(3);
+        return;
+    }
+
+    size_t len = strlen(buffer);
+    if(len > 0 && buffer[len - 1] == '\n') 
+        buffer[len - 1] = '\0';
+
+
+    char *endptr;
+    long val = strtol(buffer, &endptr, 10);
+    if(endptr == buffer || *endptr != '\0'){
+        printf("\033[31mCURRENT LAMP: RED!\033[0m\n");
+        sleep(3);
+        return;
+    }
+
+    int cardNr = (int)val;
+     Card *found = findCardByNumber(cardArrey, cardNr);
+
+     if (found && found->haveAccess)
+        printf("\033[32mCURRENT LAMP: GREEN\033[0m\n");
     else
     printf("\033[31mCURRENT LAMP: RED\033[0m\n");
 
     fflush(stdout);
-    printf("\033[F\033[K");
-    fflush(stdout);
-
-    free(lampData);
-    return 0;
-
-}
-
-void fakeTestScanCard(CARDS *cardArrey){
-    Lamp *lampData = malloc(sizeof(Lamp));
-    lampData->greenLight = 1;
-
-    //trådfunktion för att hantera lampan utan att frysa programmet
-    DWORD threadId;
-    HANDLE hThread = CreateThread(NULL, 0, showLamp, lampData, 0, &threadId); 
-    if(hThread) CloseHandle(hThread);
-
-    
-
-
-
-    
-
-
+    sleep(3);
 
 }

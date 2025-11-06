@@ -8,6 +8,9 @@
 #include "cards.h"
 #include "addRemove.h"
 #include "fakeTestScanCard.h"
+#include "safeinput.h"
+
+
 
 
 int main(){
@@ -56,7 +59,7 @@ int main(){
                 break;
             
             default:
-                printf("Option NOT valid. Please try again!");
+                printf("Option NOT valid. Please try again!\n");
         }
     } 
 

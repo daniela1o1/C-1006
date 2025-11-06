@@ -7,7 +7,7 @@
 
 void startCards(CARDS *cardArrey){
 
-    printf("List all original cards in system: ");
+    printf("List all original cards in system: \n");
 
     // Börjar med 5 kort
     cardArrey->cardAmount = 5;

@@ -80,24 +80,122 @@ newCard.haveAccess ? "YES :)" : "NO!");
 
 }
 
-void removeCard(Card *cardArrey){
+void removeCard(CARDS *cardArrey){
+    if(!cardArrey || cardArrey->cardAmount == 0){
+        printf("No cards to remove!\n");
+        return;
+    }
+
+    char input[255];
+    if(GetInput("Enter card number to remove card\nOr 'x' to cancel: ", input, sizeof(input)) != INPUT_RESULT_OK)
+    return;
+
+    if(input[0] == 'x' || input[0] == 'X')
+    return;
+
+    long num;
+    if(!parseLong(input, &num)){
+        printf("Invalid number!\n");
+        return;
+    }
+
+    int cardNr = (int)num;
+    int index = -1;
+    for(int i = 0; i < cardArrey->cardAmount; i++){
+        if(cardArrey->allCards[i].cardNr == cardNr){
+            index = i;
+            break;
+        }
+    }
+
+    if(index == -1){
+        printf("Card not found!\n");
+        return;
+    }
+
+    cardArrey->allCards[index] = cardArrey->allCards[cardArrey->cardAmount -1];
+    cardArrey->cardAmount--;
+    cardArrey->allCards = realloc(cardArrey->allCards, cardArrey->cardAmount *sizeof(Card));
+    printf("Card #%d removed successfully :)\n", cardNr);
+
 
 }
 
-void changeAccess(Card *cardArrey){
+void changeAccess(CARDS *cardArrey){
+
+    if(!cardArrey || cardArrey->cardAmount == 0){
+        printf("No cards avaleble.\n");
+        return;
+    }
+
+    printf("Current cards:\n");
+    for(int i = 0; i < cardArrey->cardAmount; i++){
+        printf("Card #%d - %s (Access: %s)\n",
+        cardArrey->allCards[i].cardNr,
+        cardArrey->allCards[i].addedToSystem,
+        cardArrey->allCards[i].haveAccess ? "YES :)" : "NO!");
+    }
+
+    while(true){
+        char input[255];
+        if(GetInput("Enter cardnumber to change level of access\nOr press x to cancel", input, sizeof(input)) != INPUT_RESULT_OK)
+        return;
+
+        if(input[0] == 'x' || input[0] == 'X')
+        return;
+
+        long cardNrLong;
+        if(!parseLong(input, &cardNrLong)){
+            printf("Invalid input! Enter a number.\n");
+            continue;
+        }
+
+        int cardNr = (int)cardNrLong;
+        int index = -1;
+        for(int i = 0; i < cardArrey->cardAmount; i++){
+            if(cardArrey->allCards[i].cardNr == cardNr){
+                index = i;
+                break;
+
+            }
+        }
+        if(index == -1){
+            printf("Card #%d not found!\n", cardNr);
+            continue;
+        }
+
+        while(true){
+            if(GetInput("Enter new access(1 = ACCESS, 0 = NO ACCESS)", input, sizeof(input)) != INPUT_RESULT_OK)
+            return;
+
+            long accessLong;
+            if(!parseLong(input, &accessLong) || (accessLong != 0 && accessLong != 1)){
+                printf("Invalid input! Enter 1 or 0.\n");
+                continue;
+            }
+
+            cardArrey->allCards[index].haveAccess = (int)accessLong;
+            printf("Access for card #%d updated to %s.\n",
+                cardNr,
+                cardArrey->allCards[index].haveAccess ? "YES :)" : "NO!");
+            break;
+        }
+
+        break;
+    }
 
 }
 
 void addRemove(CARDS *cardArrey){
     while(true){
-        printf("\n=== Add/Remove/Change access ===\n");
-        printf("1. Add new card\n");
-        printf("2. Remove card\n");
-        printf("3. Change access\n");
-        printf("X. Back to main menu\n");
+        printf("\n  === Add/Remove/Change access ===\n");
+        printf("  |1. Add new card               |\n");
+        printf("  |2. Remove card                |\n");
+        printf("  |3. Change access              |\n");
+        printf("  |X. Back to main menu          |\n");
 
         char choice;
-        if(GetInputChar("Select option: ", choice)) 
+        if(!GetInputChar("  Select option:", &choice)) 
         continue;
 
         if(choice == 'X' || choice == 'x')
