@@ -5,8 +5,7 @@
 #include "fakeTestScanCard.h"
 #include "safeinput.h"
 
-
-
+// _getch(); tar emot input utan enter
 
 int main(){
 
@@ -22,14 +21,20 @@ int main(){
         printMenu();
 
         char input[20];
-        int option;
-        if(!fgets(input, sizeof(input), stdin)){
-            printf("Cannot read input!\n");
+        long option;
+        INPUT_RESULT result = GetInput("Select option: ", input, sizeof(input));
+
+        if(result == INPUT_RESULT_NO_INPUT){
+            printf("Invalid input, try again!\n");
+            continue;
+        }
+        else if(result == INPUT_RESULT_TOO_LONG){
+            printf("Input too long, try again!\n");
             continue;
         }
 
-        if(sscanf(input, "%d", &option) != 1){
-            printf("Enter valid number :)\n");
+        if (!parseLong(input, &option)){
+            printf("Enter a valid number!\n");
             continue;
         }
         
@@ -58,8 +63,9 @@ int main(){
             
             default:
                 printf("Option NOT valid. Please try again!\n");
+                sleep(3);
+                system("cls");
+                break;
         }
     } 
-
-    return 0;
 }

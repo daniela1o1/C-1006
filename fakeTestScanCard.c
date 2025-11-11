@@ -28,6 +28,7 @@ void fakeTestScanCard(CARDS *cardArrey){
     if(fgets(buffer, sizeof(buffer), stdin) == NULL){
         printf("\033[31mCURRENT LAMP: RED!\033[0m\n");
         sleep(3);
+        system("cls");
         return;
     }
 
@@ -41,18 +42,21 @@ void fakeTestScanCard(CARDS *cardArrey){
     if(endptr == buffer || *endptr != '\0'){
         printf("\033[31mCURRENT LAMP: RED!\033[0m\n");
         sleep(3);
+        system("cls");
         return;
     }
 
     int cardNr = (int)val;
-     Card *found = findCardByNumber(cardArrey, cardNr);
+    Card *found = findCardByNumber(cardArrey, cardNr);
 
-     if (found && found->haveAccess)
+    if (found && found->haveAccess){
         printf("\033[32mCURRENT LAMP: GREEN\033[0m\n");
-    else
-    printf("\033[31mCURRENT LAMP: RED\033[0m\n");
+        sleep(3);
+        system("cls");}
 
-    fflush(stdout);
-    sleep(3);
-
+    else{
+        printf("\033[31mCURRENT LAMP: RED\033[0m\n");
+        sleep(3);
+        system("cls");
+    }
 }

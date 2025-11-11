@@ -7,6 +7,5 @@ void printMenu(){
     printf("| 3. Add/remove/change access |\n");
     printf("| 4. Exit                     |\n");
     printf("| 5. FAKE TEST SCAN CARD      |\n");
-    printf("     Select option: ");
 
 }

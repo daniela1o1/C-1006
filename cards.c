@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "cards.h"
+#include "safeinput.h"
 
 
 
@@ -39,8 +40,8 @@ void startCards(CARDS *cardArrey){
     cardArrey->allCards[4].haveAccess = 0;
 
      
-
-    }
+    return;
+}
 
 void listAllCards(CARDS *cardArrey){
 
@@ -51,14 +52,16 @@ void listAllCards(CARDS *cardArrey){
             cardArrey->allCards[i].addedToSystem, 
             cardArrey->allCards[i].haveAccess ? "Access :)" : "No access!!");
     }
+    char input[20];
+    GetInput("Press any button to continue: ", input, sizeof(input));
     printf("\n");
-    Sleep(5000);
+    
     system("cls");
-
+    return;
 }
 
 void freeCards(CARDS *cardArrey){
     free(cardArrey->allCards);
 
-
+    return;
 }

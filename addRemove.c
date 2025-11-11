@@ -62,20 +62,20 @@ void addCards(CARDS *cardArrey){
     }
 
 
-Card *temp = realloc(cardArrey->allCards, (cardArrey->cardAmount + 1) * sizeof(Card)); 
-if (!temp){
-    printf("Memory-allocation failed!\n");
-    return;
-}
+    Card *temp = realloc(cardArrey->allCards, (cardArrey->cardAmount + 1) * sizeof(Card)); 
+        if (!temp){
+            printf("Memory-allocation failed!\n");
+            return;
+        }
 
-cardArrey->allCards = temp;
-cardArrey->allCards[cardArrey->cardAmount] = newCard;
-cardArrey->cardAmount++;
+    cardArrey->allCards = temp;
+    cardArrey->allCards[cardArrey->cardAmount] = newCard;
+    cardArrey->cardAmount++;
 
-printf(" Card #%d added (%s, Access: %s)\n",
-newCard.cardNr,
-newCard.addedToSystem,
-newCard.haveAccess ? "YES :)" : "NO!");
+    printf(" Card #%d added (%s, Access: %s)\n",
+    newCard.cardNr,
+    newCard.addedToSystem,
+    newCard.haveAccess ? "YES :)" : "NO!");
 
 
 }
@@ -222,5 +222,6 @@ void addRemove(CARDS *cardArrey){
             printf("Invalid option, try again!\n");
         }
     }
+    return;
 
 }
