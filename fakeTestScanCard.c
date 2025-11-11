@@ -4,8 +4,7 @@
 #include <Windows.h>
 #include "cards.h"
 #include "faketestscancard.h"
-//#define BOLD "\033[1m"
-//#define RESET "\033[0m"
+
 
 
 

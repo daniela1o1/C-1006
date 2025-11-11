@@ -1,6 +1,8 @@
 #ifndef CARDS_H
 #define CARDS_H
 
+#include <windows.h>
+
 typedef struct{
     int cardNr;
     char addedToSystem[50];

@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <unistd.h>
-#include <windows.h>
-#include <stdlib.h>
 #include "menu.h"
 #include "door.h"
 #include "cards.h"
@@ -21,10 +16,11 @@ int main(){
     
 
     startCards(&cardArrey);
+    system("cls");
 
     while(true){
         printMenu();
-        
+
         char input[20];
         int option;
         if(!fgets(input, sizeof(input), stdin)){
@@ -37,6 +33,8 @@ int main(){
             continue;
         }
         
+        system("cls");
+
         switch(option){
             case 1:
                 remoteOpenDoor();

@@ -51,6 +51,9 @@ void listAllCards(CARDS *cardArrey){
             cardArrey->allCards[i].addedToSystem, 
             cardArrey->allCards[i].haveAccess ? "Access :)" : "No access!!");
     }
+    printf("\n");
+    Sleep(5000);
+    system("cls");
 
 }
 
