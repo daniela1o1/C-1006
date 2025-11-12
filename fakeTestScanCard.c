@@ -29,6 +29,10 @@ void fakeTestScanCard(CARDS *cardArrey){
         printf("\033[31mCURRENT LAMP: RED!\033[0m\n");
         sleep(3);
         system("cls");
+
+        printf("CURRENT LAMP: OFF!\n");
+        sleep(3);
+        system("cls");
         return;
     }
 
@@ -43,6 +47,10 @@ void fakeTestScanCard(CARDS *cardArrey){
         printf("\033[31mCURRENT LAMP: RED!\033[0m\n");
         sleep(3);
         system("cls");
+
+        printf("CURRENT LAMP: OFF!\n");
+        sleep(3);
+        system("cls");
         return;
     }
 
@@ -52,10 +60,17 @@ void fakeTestScanCard(CARDS *cardArrey){
     if (found && found->haveAccess){
         printf("\033[32mCURRENT LAMP: GREEN\033[0m\n");
         sleep(3);
-        system("cls");}
+        system("cls");
 
-    else{
+        printf("CURRENT LAMP: OFF!\n");
+        sleep(3);
+        system("cls");
+    }else{
         printf("\033[31mCURRENT LAMP: RED\033[0m\n");
+        sleep(3);
+        system("cls");
+
+        printf("CURRENT LAMP: OFF!\n");
         sleep(3);
         system("cls");
     }
