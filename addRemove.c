@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
+#include <time.h>
 #include "cards.h"
 #include "addRemove.h"
 #include "safeinput.h"
@@ -14,11 +16,11 @@ void addCards(CARDS *cardArrey){
 
     while(true){
         char input[20];
-        if(GetInput("Enter cardnumber\nOr 'x' to cancel:", input, sizeof(input)) != INPUT_RESULT_OK)
+        if(GetInput("Enter card number\nOr 'x' to cancel:", input, sizeof(input)) != INPUT_RESULT_OK)
         return;
 
         if(input[0] == 'X' || input[0] == 'x')
-        return;
+        break;;
 
         long cardNr;
         if(!parseLong(input, &cardNr)){
@@ -37,11 +39,11 @@ void addCards(CARDS *cardArrey){
         }
     }
 
-    if(GetInput("Enter today's date (ex. 'Added to system: 25-11-03'): ",
-                newCard.addedToSystem, sizeof(newCard.addedToSystem)) != INPUT_RESULT_OK){
-        printf("Cannot read input.\n");
-        return;
-    }
+    time_t t = time(NULL);
+    struct tm tm_info;
+    localtime_s(&tm_info, &t);
+    strftime(newCard.addedToSystem, sizeof(newCard.addedToSystem), "%Y-%m-%d", &tm_info);
+
 
     while(true){
         char input[10];
@@ -57,6 +59,7 @@ void addCards(CARDS *cardArrey){
             printf("Invalid input! Enter 1 or 0.\n");
             continue;
         }
+
         newCard.haveAccess = (int)access;
         break;
     }
@@ -77,12 +80,15 @@ void addCards(CARDS *cardArrey){
     newCard.addedToSystem,
     newCard.haveAccess ? "YES :)" : "NO!");
 
+    saveCardsToFile(cardArrey, "documentation.txt");
+
 
 }
 
 void removeCard(CARDS *cardArrey){
     if(!cardArrey || cardArrey->cardAmount == 0){
         printf("No cards to remove!\n");
+        system("cls");
         return;
     }
 
@@ -115,16 +121,23 @@ void removeCard(CARDS *cardArrey){
 
     cardArrey->allCards[index] = cardArrey->allCards[cardArrey->cardAmount -1];
     cardArrey->cardAmount--;
-    cardArrey->allCards = realloc(cardArrey->allCards, cardArrey->cardAmount *sizeof(Card));
-    printf("Card #%d removed successfully :)\n", cardNr);
 
+    if(cardArrey->cardAmount > 0){
+    Card *temp = realloc(cardArrey->allCards, cardArrey->cardAmount *sizeof(Card));
+    if(temp) cardArrey->allCards = temp;
+    } else{
+        free(cardArrey->allCards);
+        cardArrey->allCards = NULL;
+    }
+    printf("Card #%d removed successfully :)\n", cardNr);
+    saveCardsToFile(cardArrey, "documentation.txt");
 
 }
 
 void changeAccess(CARDS *cardArrey){
 
     if(!cardArrey || cardArrey->cardAmount == 0){
-        printf("No cards avaleble.\n");
+        printf("No cards available.\n");
         return;
     }
 
@@ -138,7 +151,7 @@ void changeAccess(CARDS *cardArrey){
 
     while(true){
         char input[255];
-        if(GetInput("Enter cardnumber to change level of access\nOr press x to cancel", input, sizeof(input)) != INPUT_RESULT_OK)
+        if(GetInput("Enter card number to change level of access\nOr press x to cancel", input, sizeof(input)) != INPUT_RESULT_OK)
         return;
 
         if(input[0] == 'x' || input[0] == 'X')
@@ -184,15 +197,17 @@ void changeAccess(CARDS *cardArrey){
         break;
     }
 
+    saveCardsToFile(cardArrey, "documentation.txt");
+
 }
 
 void addRemove(CARDS *cardArrey){
     while(true){
-        printf("\n  === Add/Remove/Change access ===\n");
-        printf("  |1. Add new card               |\n");
-        printf("  |2. Remove card                |\n");
-        printf("  |3. Change access              |\n");
-        printf("  |X. Back to main menu          |\n");
+        printf("\n== Add/Remove/Change access ==\n");
+        printf("|1. Add new card               |\n");
+        printf("|2. Remove card                |\n");
+        printf("|3. Change access              |\n");
+        printf("|X. Back to main menu          |\n");
 
         char choice;
         if(!GetInputChar("  Select option:", &choice)) 
@@ -223,5 +238,30 @@ void addRemove(CARDS *cardArrey){
         }
     }
     return;
+
+}
+
+void saveCardsToFile(const CARDS *cardArrey, const char *documentation){
+    FILE *doc = fopen(documentation, "w"); 
+    if(doc == NULL){
+        perror("Could not open file for writing");
+        return;
+    }
+
+    time_t t = time(NULL);
+    fprintf(doc, "==CardDocumentation==\n");
+    fprintf(doc, "Saved: %s\n", ctime(&t));
+
+    for(int i = 0; i < cardArrey->cardAmount; i++){
+        fprintf(doc, "Card %d:\n", i + 1);
+        fprintf(doc, "Cardnumber: %d\n", cardArrey->allCards[i].cardNr);
+        fprintf(doc, "Added to system: %s\n", cardArrey->allCards[i].addedToSystem);
+        fprintf(doc, "Access: %s\n", cardArrey->allCards[i].haveAccess ? "YES :)" : "NO!");
+        fprintf(doc, "-----------------------------\n");
+    }
+
+    fclose(doc);
+    printf("All cards saved in %s .\n", documentation);
+
 
 }

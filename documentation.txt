@@ -1,0 +1,28 @@
+==CardDocumentation==
+Saved: Wed Nov 12 13:38:50 2025
+
+Card 1:
+Cardnumber: 1990
+Added to system: 2025-11-12
+Access: YES :)
+-----------------------------
+Card 2:
+Cardnumber: 1991
+Added to system: 2025-11-12
+Access: YES :)
+-----------------------------
+Card 3:
+Cardnumber: 1992
+Added to system: 2025-11-12
+Access: YES :)
+-----------------------------
+Card 4:
+Cardnumber: 1993
+Added to system: 2025-11-12
+Access: NO!
+-----------------------------
+Card 5:
+Cardnumber: 1994
+Added to system: 2025-11-12
+Access: NO!
+-----------------------------

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
+#include <time.h>
 #include "cards.h"
 #include "safeinput.h"
 
@@ -17,26 +19,33 @@ void startCards(CARDS *cardArrey){
         printf("Failed memory-allocation!\n");
         exit(1);
     }
+
+    time_t t = time(NULL);
+    struct tm tm_info;
+    localtime_s(&tm_info, &t);
+    char today[20];
+    strftime(today, sizeof(today), "%Y-%m-%d", &tm_info);
+
     
     // Startlista med kort
     cardArrey->allCards[0].cardNr = 1990;
-    strcpy(cardArrey->allCards[0].addedToSystem, "Added to system: 25-10-15"); 
+    strcpy(cardArrey->allCards[0].addedToSystem, today); 
     cardArrey->allCards[0].haveAccess = 1;
 
     cardArrey->allCards[1].cardNr = 1991;
-    strcpy(cardArrey->allCards[1].addedToSystem, "Added to system: 25-10-25");
+    strcpy(cardArrey->allCards[1].addedToSystem, today);
     cardArrey->allCards[1].haveAccess = 1;
 
     cardArrey->allCards[2].cardNr = 1992;
-    strcpy(cardArrey->allCards[2].addedToSystem, "Added to system: 25-10-25");
+    strcpy(cardArrey->allCards[2].addedToSystem, today);
     cardArrey->allCards[2].haveAccess = 1;
 
     cardArrey->allCards[3].cardNr = 1993;
-    strcpy(cardArrey->allCards[3].addedToSystem, "Added to system: 25-10-29");
+    strcpy(cardArrey->allCards[3].addedToSystem, today);
     cardArrey->allCards[3].haveAccess = 0;
 
     cardArrey->allCards[4].cardNr = 1994;
-    strcpy(cardArrey->allCards[4].addedToSystem, "Added to system: 25-10-29");
+    strcpy(cardArrey->allCards[4].addedToSystem, today);
     cardArrey->allCards[4].haveAccess = 0;
 
      
@@ -62,6 +71,9 @@ void listAllCards(CARDS *cardArrey){
 
 void freeCards(CARDS *cardArrey){
     free(cardArrey->allCards);
+    cardArrey->allCards = NULL;
+    cardArrey->cardAmount = 0;
+
 
     return;
 }

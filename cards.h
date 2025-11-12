@@ -1,8 +1,6 @@
 #ifndef CARDS_H
 #define CARDS_H
 
-#include <windows.h>
-
 typedef struct{
     int cardNr;
     char addedToSystem[50];
@@ -24,6 +22,7 @@ CARDS; //lådan
 
 void listAllCards(CARDS *cardArrey); //Skriver ut alla kort
 void startCards(CARDS *cardArrey); // Lista över ursprungliga kort
+void saveCardsToFile(const CARDS *cardArrey, const char *documentation);
 void freeCards(CARDS *cardArrey); // Frigör dynamiskt minne
 
 #endif

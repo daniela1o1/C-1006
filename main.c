@@ -15,6 +15,9 @@ int main(){
     
 
     startCards(&cardArrey);
+
+    saveCardsToFile(&cardArrey, "documentation.txt");
+    
     system("cls");
 
     while(true){
@@ -22,19 +25,25 @@ int main(){
 
         char input[20];
         long option;
-        INPUT_RESULT result = GetInput("Select option: ", input, sizeof(input));
+        INPUT_RESULT result = GetInput("    Select option: ", input, sizeof(input));
 
         if(result == INPUT_RESULT_NO_INPUT){
             printf("Invalid input, try again!\n");
+            sleep(3);
+            system("cls");
             continue;
         }
         else if(result == INPUT_RESULT_TOO_LONG){
             printf("Input too long, try again!\n");
+            sleep(3);
+            system("cls");
             continue;
         }
 
         if (!parseLong(input, &option)){
             printf("Enter a valid number!\n");
+            sleep(3);
+            system("cls");
             continue;
         }
         
@@ -51,9 +60,11 @@ int main(){
 
             case 3:
                 addRemove(&cardArrey);
+                saveCardsToFile(&cardArrey, "documentation.txt");
                 break;
 
             case 4:
+                saveCardsToFile(&cardArrey, "documentation.txt");
                 freeCards(&cardArrey);
                 return 0;
 
@@ -68,4 +79,7 @@ int main(){
                 break;
         }
     } 
+
+
+    
 }
