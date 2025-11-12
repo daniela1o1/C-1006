@@ -15,6 +15,9 @@ void remoteOpenDoor(){
     sleep(3);
     system("cls");
     fflush(stdout);
+
+
+    return;
     
 }
     

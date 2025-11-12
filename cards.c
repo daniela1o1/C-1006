@@ -5,14 +5,17 @@
 #include <time.h>
 #include "cards.h"
 #include "safeinput.h"
+#include "fileHandler.h"
 
 
 
 void startCards(CARDS *cardArrey){
-
+    if(loadCardsFromFile(cardArrey, "documentation.txt") > 0){
     printf("List all original cards in system: \n");
+        return;
+    }
+    
 
-    // Börjar med 5 kort
     cardArrey->cardAmount = 5;
     cardArrey->allCards = malloc(cardArrey->cardAmount * sizeof(Card));
     if(!cardArrey->allCards){
@@ -48,6 +51,8 @@ void startCards(CARDS *cardArrey){
     strcpy(cardArrey->allCards[4].addedToSystem, today);
     cardArrey->allCards[4].haveAccess = 0;
 
+
+    saveCardsToFile(cardArrey, "documentation.txt");
      
     return;
 }

@@ -59,4 +59,6 @@ void fakeTestScanCard(CARDS *cardArrey){
         sleep(3);
         system("cls");
     }
+
+    return;
 }

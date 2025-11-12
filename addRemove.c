@@ -6,6 +6,7 @@
 #include "cards.h"
 #include "addRemove.h"
 #include "safeinput.h"
+#include "fileHandler.h"
 
 
 void addCards(CARDS *cardArrey){
@@ -82,6 +83,7 @@ void addCards(CARDS *cardArrey){
 
     saveCardsToFile(cardArrey, "documentation.txt");
 
+    return;
 
 }
 
@@ -131,6 +133,8 @@ void removeCard(CARDS *cardArrey){
     }
     printf("Card #%d removed successfully :)\n", cardNr);
     saveCardsToFile(cardArrey, "documentation.txt");
+
+    return;
 
 }
 
@@ -199,6 +203,8 @@ void changeAccess(CARDS *cardArrey){
 
     saveCardsToFile(cardArrey, "documentation.txt");
 
+    return;
+
 }
 
 void addRemove(CARDS *cardArrey){
@@ -238,30 +244,5 @@ void addRemove(CARDS *cardArrey){
         }
     }
     return;
-
-}
-
-void saveCardsToFile(const CARDS *cardArrey, const char *documentation){
-    FILE *doc = fopen(documentation, "w"); 
-    if(doc == NULL){
-        perror("Could not open file for writing");
-        return;
-    }
-
-    time_t t = time(NULL);
-    fprintf(doc, "==CardDocumentation==\n");
-    fprintf(doc, "Saved: %s\n", ctime(&t));
-
-    for(int i = 0; i < cardArrey->cardAmount; i++){
-        fprintf(doc, "Card %d:\n", i + 1);
-        fprintf(doc, "Cardnumber: %d\n", cardArrey->allCards[i].cardNr);
-        fprintf(doc, "Added to system: %s\n", cardArrey->allCards[i].addedToSystem);
-        fprintf(doc, "Access: %s\n", cardArrey->allCards[i].haveAccess ? "YES :)" : "NO!");
-        fprintf(doc, "-----------------------------\n");
-    }
-
-    fclose(doc);
-    printf("All cards saved in %s .\n", documentation);
-
 
 }

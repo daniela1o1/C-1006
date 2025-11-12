@@ -4,8 +4,8 @@
 #include "addRemove.h"
 #include "fakeTestScanCard.h"
 #include "safeinput.h"
+#include "fileHandler.h"
 
-// _getch(); tar emot input utan enter
 
 int main(){
 
