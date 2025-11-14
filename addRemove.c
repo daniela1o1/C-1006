@@ -17,7 +17,7 @@ void addCards(CARDS *cardArrey){
 
     while(true){
         char input[20];
-        if(GetInput("Enter card number\nOr 'x' to cancel:", input, sizeof(input)) != INPUT_RESULT_OK)
+        if(GetInput("\nEnter card number\nOr 'x' to cancel: ", input, sizeof(input)) != INPUT_RESULT_OK)
         return;
 
         if(input[0] == 'X' || input[0] == 'x')
@@ -155,7 +155,7 @@ void changeAccess(CARDS *cardArrey){
 
     while(true){
         char input[255];
-        if(GetInput("Enter card number to change level of access\nOr press x to cancel", input, sizeof(input)) != INPUT_RESULT_OK)
+        if(GetInput("\nEnter card number to change level of access\nOr press x to cancel: ", input, sizeof(input)) != INPUT_RESULT_OK)
         return;
 
         if(input[0] == 'x' || input[0] == 'X')
@@ -209,6 +209,7 @@ void changeAccess(CARDS *cardArrey){
 
 void addRemove(CARDS *cardArrey){
     while(true){
+        system("cls");
         printf("\n== Add/Remove/Change access ==\n");
         printf("|1. Add new card               |\n");
         printf("|2. Remove card                |\n");
@@ -216,10 +217,11 @@ void addRemove(CARDS *cardArrey){
         printf("|X. Back to main menu          |\n");
 
         char choice;
-        if(!GetInputChar("  Select option:", &choice)) 
+        if(!GetInputChar("    Select option:", &choice)) 
         continue;
 
         if(choice == 'X' || choice == 'x')
+        system("cls");
         break;
 
         switch(choice){
@@ -232,6 +234,8 @@ void addRemove(CARDS *cardArrey){
                 break;
 
             case '3':
+                system("cls");
+                printf("==Change level of access==\n");
                 changeAccess(cardArrey);
                 break;
 

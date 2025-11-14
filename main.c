@@ -25,7 +25,7 @@ int main(){
 
         char input[20];
         long option;
-        INPUT_RESULT result = GetInput("    Select option: ", input, sizeof(input));
+        INPUT_RESULT result = GetInput("     Select option: ", input, sizeof(input));
 
         if(result == INPUT_RESULT_NO_INPUT){
             printf("Invalid input, try again!\n");

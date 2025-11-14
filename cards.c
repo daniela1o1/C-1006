@@ -58,7 +58,7 @@ void startCards(CARDS *cardArrey){
 }
 
 void listAllCards(CARDS *cardArrey){
-
+    
     for (int i = 0; i < cardArrey->cardAmount; i++)
     {
         printf("%d %s - %s\n", 

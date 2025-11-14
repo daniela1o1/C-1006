@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void printMenu(){
+    
     printf("|      ===ADMIN MENU===       |\n");
     printf("| 1. Remote open door         |\n");
     printf("| 2. List all cards in system |\n");
