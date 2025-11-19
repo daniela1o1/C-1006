@@ -210,7 +210,7 @@ void changeAccess(CARDS *cardArrey){
 void addRemove(CARDS *cardArrey){
     while(true){
         system("cls");
-        printf("\n== Add/Remove/Change access ==\n");
+        printf("\n == Add/Remove/Change access ==\n");
         printf("|1. Add new card               |\n");
         printf("|2. Remove card                |\n");
         printf("|3. Change access              |\n");
