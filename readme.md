@@ -37,7 +37,6 @@ functions to avoid buffer overflows and crashes.
 
 ### Prerequisites
 - GCC-compiler
-- A POSIX-compatible environment (Linux, macOS, or WSL on Windows)
 
 ### Build
 ```bash
