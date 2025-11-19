@@ -53,21 +53,4 @@ INPUT_RESULT GetInput(char* prompt, char* buff, int maxSize){
 
 
 
-//INPUT_RESULT GetInputFromFile(FILE *source, char *buff, int maxSize){
-//	if(!source || buff || maxSize <= 0)
-//	return INPUT_RESULT_NO_INPUT;
-//
-//	if(fgets(buff, maxSize, source) == NULL)
-//	return INPUT_RESULT_NO_INPUT;
-//
-//	if(buff[strlen(buff) - 1] != '\n' && !feof(source)){
-//		int ch;
-//		while(((ch = fgetc(source)) != '\n') && (ch != EOF));//tömmer raden helt
-//		return INPUT_RESULT_TOO_LONG;
-//	}
-//
-//	buff[strcspn(buff, "\n")] = '\0';
-//
-//	return INPUT_RESULT_OK;
-//	
-//}
+

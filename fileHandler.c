@@ -8,7 +8,7 @@
 
 
 void saveCardsToFile(const CARDS *cardArrey, const char *documentation){
-    FILE *doc = fopen(documentation, "w"); //fopen öppnar filen för att skriva 
+    FILE *doc = fopen(documentation, "w");  
     if(doc == NULL){
         perror("Could not open file.");
         return;
@@ -26,14 +26,14 @@ void saveCardsToFile(const CARDS *cardArrey, const char *documentation){
         fprintf(doc, "__________________________\n");
     }
 
-    fclose(doc); //fclose stänger filen igen xD
+    fclose(doc); 
 
     return;
 }
 
 
 int loadCardsFromFile(CARDS *cardArrey, const char *documentation){
-    FILE *doc = fopen(documentation, "r"); //filen öppnas för läsning "r"
+    FILE *doc = fopen(documentation, "r"); 
     if(!doc){
         return 0;
     }
@@ -71,7 +71,7 @@ int loadCardsFromFile(CARDS *cardArrey, const char *documentation){
         }
     }
 
-    fclose(doc); //filen stängd för läsning
+    fclose(doc); 
     return 1;
 
 
