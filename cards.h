@@ -8,21 +8,15 @@ typedef struct{
 } Card;
 
 typedef struct{
-    Card *allCards; //arreyen
+    Card *allCards; 
     int cardAmount;
 }
-CARDS; //lådan
+CARDS; 
 
 
-//extern CARDS *listOfCards;
-//extern int cardArrey.cardAmount;
-//ta cardArrey (all data), allt annat(->/. osv är för att hitta specifik data i listofcards).
-//kommer åt allCards eller cardAmount 
-// cardArrey->allcards[].cardNr 
-
-void listAllCards(CARDS *cardArrey); //Skriver ut alla kort
-void startCards(CARDS *cardArrey); // Lista över ursprungliga kort
+void listAllCards(CARDS *cardArrey); 
+void startCards(CARDS *cardArrey); 
 void saveCardsToFile(const CARDS *cardArrey, const char *documentation);
-void freeCards(CARDS *cardArrey); // Frigör dynamiskt minne
+void freeCards(CARDS *cardArrey); 
 
 #endif

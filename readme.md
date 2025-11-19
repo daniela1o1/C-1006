@@ -21,13 +21,13 @@ functions to avoid buffer overflows and crashes.
 
 ## Example Screenshot
 
-<p align="center"><strong>Admin Menu<strong></p>
+<p align="center"><strong>Admin Menu</strong></p>
 <p align="center">
 <img src="images/AdminMenu.png.png" width="350">
-<p align="center"><strong>Add/Remove/Menu<strong></p>
+<p align="center"><strong>Add/Remove/Menu</strong></p>
 <p align="center">
 <img src="images/AddRemoveMenu.png.png" width="350">
-<p align="center"><strong>List of Cards<strong></p>
+<p align="center"><strong>List of Cards</strong></p>
 <p align="center">
 <img src="images/ListCards.png.png" width="350">
 
@@ -35,9 +35,10 @@ functions to avoid buffer overflows and crashes.
 
 ##  Getting Started
 
-### Prerequisites
+### Requirements
 - GCC-compiler
+- 
 
-### Build
+### Code examples
 ```bash
 
