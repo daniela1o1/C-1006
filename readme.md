@@ -23,7 +23,7 @@ functions to avoid buffer overflows and crashes.
 
 <p align="center"><strong>Admin Menu<strong></p>
 <p align="center">
-<img src="AdminMenu.png.png" width="350">
+<img src="images/AdminMenu.png.png" width="350">
 
 
 
