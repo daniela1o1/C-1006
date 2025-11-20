@@ -31,25 +31,25 @@ void startCards(CARDS *cardArrey){
 
     
     // Startlista med kort
-    cardArrey->allCards[0].cardNr = 1990;
-    strcpy(cardArrey->allCards[0].addedToSystem, today); 
-    cardArrey->allCards[0].haveAccess = 1;
+    //cardArrey->allCards[0].cardNr = 1990;
+    //strcpy(cardArrey->allCards[0].addedToSystem, today); 
+    //cardArrey->allCards[0].haveAccess = 1;
 
-    cardArrey->allCards[1].cardNr = 1991;
-    strcpy(cardArrey->allCards[1].addedToSystem, today);
-    cardArrey->allCards[1].haveAccess = 1;
+    //cardArrey->allCards[1].cardNr = 1991;
+    //strcpy(cardArrey->allCards[1].addedToSystem, today);
+    //cardArrey->allCards[1].haveAccess = 1;
 
-    cardArrey->allCards[2].cardNr = 1992;
-    strcpy(cardArrey->allCards[2].addedToSystem, today);
-    cardArrey->allCards[2].haveAccess = 1;
+    //cardArrey->allCards[2].cardNr = 1992;
+    //strcpy(cardArrey->allCards[2].addedToSystem, today);
+    //cardArrey->allCards[2].haveAccess = 1;
 
-    cardArrey->allCards[3].cardNr = 1993;
-    strcpy(cardArrey->allCards[3].addedToSystem, today);
-    cardArrey->allCards[3].haveAccess = 0;
+    //cardArrey->allCards[3].cardNr = 1993;
+    //strcpy(cardArrey->allCards[3].addedToSystem, today);
+    //cardArrey->allCards[3].haveAccess = 0;
 
-    cardArrey->allCards[4].cardNr = 1994;
-    strcpy(cardArrey->allCards[4].addedToSystem, today);
-    cardArrey->allCards[4].haveAccess = 0;
+    //cardArrey->allCards[4].cardNr = 1994;
+    //strcpy(cardArrey->allCards[4].addedToSystem, today);
+    //cardArrey->allCards[4].haveAccess = 0;
 
 
     saveCardsToFile(cardArrey, "documentation.txt");

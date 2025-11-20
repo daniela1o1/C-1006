@@ -8,6 +8,7 @@
     ],
     "files.associations": {
         "stdlib.h": "c",
-        "windows.h": "c"
+        "windows.h": "c",
+        "time.h": "c"
     }
 }

@@ -72,7 +72,9 @@ int loadCardsFromFile(CARDS *cardArrey, const char *documentation){
     }
 
     fclose(doc); 
+
     return 1;
 
 
+    
 }

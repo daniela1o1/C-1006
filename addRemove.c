@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <unistd.h>
 #include <time.h>
 #include "cards.h"
 #include "addRemove.h"
@@ -26,6 +27,8 @@ void addCards(CARDS *cardArrey){
         long cardNr;
         if(!parseLong(input, &cardNr)){
             printf("Invalid input! Enter a number.\n");
+            sleep(3);
+            system("cls");
             continue;
         }
 
@@ -36,6 +39,8 @@ void addCards(CARDS *cardArrey){
     for(int i = 0; i < cardArrey->cardAmount; i++){
         if(cardArrey->allCards[i].cardNr == newCard.cardNr){
             printf("Card #%d already exists in the system!\n", newCard.cardNr);
+            sleep(3);
+            system("cls");
             return;
         }
     }
@@ -58,6 +63,8 @@ void addCards(CARDS *cardArrey){
         long access;
         if(!parseLong(input, &access) || (access != 0 && access != 1)){
             printf("Invalid input! Enter 1 or 0.\n");
+            sleep(3);
+            system("cls");
             continue;
         }
 
@@ -80,6 +87,8 @@ void addCards(CARDS *cardArrey){
     newCard.cardNr,
     newCard.addedToSystem,
     newCard.haveAccess ? "YES :)" : "NO!");
+    sleep(3);
+    system("cls");
 
     saveCardsToFile(cardArrey, "documentation.txt");
 
@@ -132,6 +141,8 @@ void removeCard(CARDS *cardArrey){
         cardArrey->allCards = NULL;
     }
     printf("Card #%d removed successfully :)\n", cardNr);
+    sleep(3);
+    system("cls");
     saveCardsToFile(cardArrey, "documentation.txt");
 
     return;
@@ -195,6 +206,8 @@ void changeAccess(CARDS *cardArrey){
             printf("Access for card #%d updated to %s.\n",
                 cardNr,
                 cardArrey->allCards[index].haveAccess ? "YES :)" : "NO!");
+                sleep(3);
+                system("cls");
             break;
         }
 
@@ -221,7 +234,7 @@ void addRemove(CARDS *cardArrey){
         continue;
 
         if(choice == 'X' || choice == 'x')
-        system("cls");
+        
         break;
 
         switch(choice){
@@ -245,6 +258,8 @@ void addRemove(CARDS *cardArrey){
 
             default:
             printf("Invalid option, try again!\n");
+            sleep(3);
+            system("cls");
         }
     }
     return;
