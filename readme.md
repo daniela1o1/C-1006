@@ -94,16 +94,6 @@ saveCardsToFile(cards, "documentation.txt");
 ```c
 loadCardsFromFile(cards, "documentation.txt");
 ```
-## 📋 Example of saved file format
-==CardDocumentation==\n
-Saved: Wed Feb 12 15:24:10 2025\n
-
-Card 1:\n
-Cardnumber: 1234\n
-Added to system: 2025-02-12\n
-Access: YES :)\n
-__________________________
-
 ## Suggestions for Improvement
 
 - Add the ability to log all card scans with timestamps
