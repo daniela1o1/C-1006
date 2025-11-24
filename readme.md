@@ -8,7 +8,7 @@ The project demonstrates secure memory handling using malloc,
 realloc, and free, as well as robust input handling via safe input 
 functions to avoid buffer overflows and crashes.
 
-## 📌 Features
+## Features
 
 - Fake card scanning to simulate door access
 - Add new cards to the system
@@ -49,7 +49,7 @@ adding cards, and saving/loading card data.
 
 ---
 
-## 🔒 Safe User Input
+## Safe User Input
 ```c
 char input[20];
 long number;
@@ -86,11 +86,11 @@ cards->allCards = temp;
 cards->allCards[cards->cardAmount] = newCard;
 cards->cardAmount++;
 ```
-## 💾 Saving Cards to File
+## Saving Cards to File
 ```c
 saveCardsToFile(cards, "documentation.txt");
 ```
-## 📂 Loading Cards at Startup
+## Loading Cards at Startup
 ```c
 loadCardsFromFile(cards, "documentation.txt");
 ```
