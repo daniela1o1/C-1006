@@ -37,6 +37,10 @@ functions to avoid buffer overflows and crashes.
 
 ### Requirements
 - GCC-compiler
+- C standard library (stdlib.h, stdio.h, string.h, time.h, errno.h)
+- POSIX-compatible system for `sleep()` (or Windows – `Sleep()` in windows.h)
+- Make sure terminal/console supports standard input/output
+- Optional: text editor to view saved files (documentation.txt)
 
 ### Code examples
 
@@ -91,14 +95,24 @@ saveCardsToFile(cards, "documentation.txt");
 loadCardsFromFile(cards, "documentation.txt");
 ```
 ## 📋 Example of saved file format
-==CardDocumentation==
-Saved: Wed Feb 12 15:24:10 2025
+==CardDocumentation==\n
+Saved: Wed Feb 12 15:24:10 2025\n
 
-Card 1:
-Cardnumber: 1234
-Added to system: 2025-02-12
-Access: YES :)
+Card 1:\n
+Cardnumber: 1234\n
+Added to system: 2025-02-12\n
+Access: YES :)\n
 __________________________
+
+## Suggestions for Improvement
+
+- Add the ability to log all card scans with timestamps
+- Make the program portable between Windows and Linux/macOS
+- Implement a password-protected admin menu
+- Enhance the menu with colors or ASCII symbols for better readability
+- Add error handling for file read/write operations
+- Include unit tests for critical functions like safe input and card management
+- Allow batch import/export of cards from/to a file
 
 
 
