@@ -37,8 +37,71 @@ functions to avoid buffer overflows and crashes.
 
 ### Requirements
 - GCC-compiler
-- 
 
 ### Code examples
-```bash
+
+Below are small code snippets showing how the system handles safe input,
+adding cards, and saving/loading card data.
+
+---
+
+## 🔒 Safe User Input
+```c
+char input[20];
+long number;
+
+// Loop until user enters a valid number
+while (true) {
+    if (GetInput("Enter card number: ", input, sizeof(input)) != INPUT_RESULT_OK)
+        break;
+
+    if (parseLong(input, &number)) {
+        printf("You entered: %ld\n", number);
+        break;
+    }
+
+    printf("Invalid number! Try again.\n");
+}
+```
+## Adding new card (simplified example)
+```c
+Card newCard;
+newCard.cardNr = 1234;
+newCard.haveAccess = 1;
+
+// Expand list
+Card *temp = realloc(cards->allCards,
+                     (cards->cardAmount + 1) * sizeof(Card));
+
+if (!temp) {
+    printf("Memory allocation failed!\n");
+    return;
+}
+
+cards->allCards = temp;
+cards->allCards[cards->cardAmount] = newCard;
+cards->cardAmount++;
+```
+## 💾 Saving Cards to File
+```c
+saveCardsToFile(cards, "documentation.txt");
+```
+## 📂 Loading Cards at Startup
+```c
+loadCardsFromFile(cards, "documentation.txt");
+```
+## 📋 Example of saved file format
+==CardDocumentation==
+Saved: Wed Feb 12 15:24:10 2025
+
+Card 1:
+Cardnumber: 1234
+Added to system: 2025-02-12
+Access: YES :)
+__________________________
+
+
+
+
+
 
