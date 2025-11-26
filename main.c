@@ -1,3 +1,8 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <unistd.h>
+#include <windows.h>
+#include <stdlib.h>
 #include "menu.h"
 #include "door.h"
 #include "cards.h"
