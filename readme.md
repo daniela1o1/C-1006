@@ -1,4 +1,4 @@
-# Card Access Simulator
+# Card Access Simulator (Schoolproject)
 
 A lightweight C-based system for simulating card access control.  
 Users can fake-scan cards, add/remove cards, modify access levels, 
@@ -103,6 +103,7 @@ loadCardsFromFile(cards, "documentation.txt");
 - Add error handling for file read/write operations
 - Include unit tests for critical functions like safe input and card management
 - Allow batch import/export of cards from/to a file
+- Add encryption to pogram
 
 
 
