@@ -1,14 +1,15 @@
-# Card Access Simulator (Schoolproject)
-
-# Card Access Simulator 
+# Card Access Simulator (School Project)
 
 A modular C program simulating a basic card-based door access system.
 
 This project was built as part of my programming course and focuses on:
+
 - Modular C design
 - File handling
 - Structured project organization
 - Makefile-based build system
+- Safe input handling
+- Dynamic memory management
 
 ---
 
@@ -19,10 +20,13 @@ This project was built as part of my programming course and focuses on:
 - Door open/close logic
 - File-based storage
 - Input validation (safe input handling)
+- Dynamic card list expansion using `realloc`
 
 ---
 
 ## Project Structure
+
+
 
 C-1006/  
 ├── src/ # Source files (.c)  
