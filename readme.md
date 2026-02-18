@@ -22,14 +22,14 @@ This project was built as part of my programming course and focuses on:
 
 ---
 
-## 🏗 Project Structure
+## Project Structure
 
 C-1006/
-├── src/ # Source files (.c)
-├── include/ # Header files (.h)
-├── Makefile
-├── README.md
-└── .gitignore
+├── src/ # Source files (.c)  
+├── include/ # Header files (.h)  
+├── Makefile  
+├── README.md  
+└── .gitignore  
 
 
 The project uses separate compilation and object files.
