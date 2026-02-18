@@ -1,25 +1,55 @@
 # Card Access Simulator (Schoolproject)
 
-A lightweight C-based system for simulating card access control.  
-Users can fake-scan cards, add/remove cards, modify access levels, 
-and list all cards stored in the system.
+# Card Access Simulator 
 
-The project demonstrates secure memory handling using malloc, 
-realloc, and free, as well as robust input handling via safe input 
-functions to avoid buffer overflows and crashes.
+A modular C program simulating a basic card-based door access system.
+
+This project was built as part of my programming course and focuses on:
+- Modular C design
+- File handling
+- Structured project organization
+- Makefile-based build system
+
+---
 
 ## Features
 
-- Fake card scanning to simulate door access
-- Add new cards to the system
-- Remove existing cards
-- Modify access levels
-- List all stored cards
-- Dynamic memory management using `malloc`, `realloc`, and `free`
-- Safe input routines for preventing buffer overflow
+- Add and remove access cards
+- Simulate scanning a card
+- Door open/close logic
+- File-based storage
+- Input validation (safe input handling)
+
+---
+
+## 🏗 Project Structure
+
+C-1006/
+├── src/ # Source files (.c)
+├── include/ # Header files (.h)
+├── Makefile
+├── README.md
+└── .gitignore
 
 
-## Example Screenshot
+The project uses separate compilation and object files.
+
+---
+
+## 🔧 Build
+
+```bash
+make
+
+make run
+
+./card_simulator
+
+make clean
+
+
+
+## Example Screenshots
 
 <p align="center"><strong>Admin Menu</strong></p>
 <p align="center">
@@ -36,10 +66,10 @@ functions to avoid buffer overflows and crashes.
 ##  Getting Started
 
 ### Requirements
-- GCC-compiler
-- C standard library (stdlib.h, stdio.h, string.h, time.h, errno.h)
-- POSIX-compatible system for `sleep()` (or Windows – `Sleep()` in windows.h)
-- Make sure terminal/console supports standard input/output
+- GCC compiler
+- Standard C libraries (stdlib.h, stdio.h, string.h, time.h, errno.h)
+- POSIX-compatible system for sleep() (or Windows using Sleep() from windows.h)
+- Terminal/console with standard input/output support
 - Optional: text editor to view saved files (documentation.txt)
 
 ### Code examples
@@ -103,7 +133,7 @@ loadCardsFromFile(cards, "documentation.txt");
 - Add error handling for file read/write operations
 - Include unit tests for critical functions like safe input and card management
 - Allow batch import/export of cards from/to a file
-- Add encryption to pogram
+- Add encryption to stored card data
 
 
 

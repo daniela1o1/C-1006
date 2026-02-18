@@ -1,10 +1,25 @@
-PROG = main.exe 
-SRC = main.c menu.c cards.c door.c addRemove.c fakeTestScanCard.c safeinput.c fileHandler.c
-CFLAGS =-Wall -Werror -g
-LIBS = 
+CC = gcc
+PROG = card_simulator
+
+CFLAGS = -Wall -Wextra -Werror -g -Iinclude
+LDFLAGS =
+LIBS =
+
+SRC = $(wildcard src/*.c)
+OBJ = $(SRC:.c=.o)
+
 all: $(PROG)
-$(PROG): $(SRC)
-	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(SRC)  $(LIBS) 
+
+$(PROG): $(OBJ)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS) $(LIBS)
+
+src/%.o: src/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run: $(PROG)
+	./$(PROG)
+
 clean:
-	rm -f $(PROG)
-.PHONY: all clean
+	rm -f $(OBJ) $(PROG)
+
+.PHONY: all clean run
