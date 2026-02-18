@@ -36,7 +36,7 @@ The project uses separate compilation and object files.
 
 ---
 
-## 🔧 Build
+## Build
 
 ```bash
 make
@@ -47,8 +47,7 @@ make run
 
 make clean
 
-
-
+```
 ## Example Screenshots
 
 <p align="center"><strong>Admin Menu</strong></p>
