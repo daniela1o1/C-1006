@@ -24,7 +24,7 @@ This project was built as part of my programming course and focuses on:
 
 ## Project Structure
 
-C-1006/
+C-1006/  
 ├── src/ # Source files (.c)  
 ├── include/ # Header files (.h)  
 ├── Makefile  
